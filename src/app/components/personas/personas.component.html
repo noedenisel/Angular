@@ -1,0 +1,85 @@
+<div class="container">
+    <mat-toolbar>
+      <span>Listado de Socios</span>
+    </mat-toolbar>
+  
+    <div *ngIf="listPersona.length > 0 ">
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+  
+    <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort>
+              
+              <ng-container matColumnDef="Nombre">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Nombre}} </td>
+              </ng-container>
+      
+    
+              <ng-container matColumnDef="Apellido">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Apellido}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="NumSocio">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Numero de Socio </th>
+                <td mat-cell *matCellDef="let element"> {{element.NumSocio}} </td>
+          </ng-container>
+
+              <ng-container matColumnDef="Dni">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> DNI </th>
+                <td mat-cell *matCellDef="let element"> {{element.Dni}} </td>
+              </ng-container>
+      
+    
+              <ng-container matColumnDef="Telefono">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Telefono}} </td>
+              </ng-container>
+
+
+              
+              <ng-container matColumnDef="Sexo">
+                    <th mat-header-cell *matHeaderCellDef> Sexo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.Sexo}} </td>
+              </ng-container>
+
+
+              
+  
+              <ng-container matColumnDef="Acciones">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element; let i= index" style="text-align: rigth ;"> {{element.Acciones}} 
+                      <a class="cursor: pointer" routerLink="edit/{{i}}" matTooltip="Editar Registro" >
+                        <mat-icon> edit </mat-icon>
+                      </a>
+                      <a class="cursor: pointer" (click)= "eliminarPersona(i)" style="color: red;"  matTooltip="Eliminar Registro">
+                        <mat-icon> delete </mat-icon>
+                      </a>
+                    </td>
+              </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+      </table>
+      
+      
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+       
+    </div>
+    </div>
+  
+  <br>
+  <br>
+  <h2 *ngIf= "listPersona.length == 0">No hay registros para mostrar</h2>
+  <br>
+  
+  <button class="button" mat-raised-button color="accent" routerLink="/add" routerLinkActive="activebutton" style="align-items: center;"> Agregar Socio</button>
+  
+  </div>
+
+ 

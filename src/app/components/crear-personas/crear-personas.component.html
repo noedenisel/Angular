@@ -1,0 +1,79 @@
+<div class="container">
+    <mat-toolbar>
+      <span>{{ accion }} Socio</span>
+    </mat-toolbar>
+    <mat-card style="margin-top: 20 px" >
+   
+        <form [formGroup]="myForm" >
+
+        <mat-grid-list cols="1" rowHeight="50" width="50%" >
+
+            
+            <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                <mat-form-field class="ancho">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" autocomplete="off"  formControlName='Nombre' placeholder="Minimo 3 caracteres">
+                  </mat-form-field> 
+                </mat-grid-tile> 
+               
+
+            <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                <mat-form-field class="ancho">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput type="text" autocomplete="off" formControlName='Apellido'  placeholder="Minimo 3 caracteres">
+                  </mat-form-field >
+            </mat-grid-tile>
+
+
+            <mat-grid-tile [colspan]="1" [rowspan]="1" >
+              <mat-form-field class="ancho">
+                  <mat-label>Numero de Socio</mat-label>
+                  <input matInput autocomplete="off" formControlName='NumSocio'>
+                </mat-form-field>
+          
+                
+          </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="1" [rowspan]="1" >
+              <mat-form-field class="ancho">
+                  <mat-label>DNI</mat-label>
+                  <input matInput type="text" autocomplete="off" formControlName='Dni' placeholder="Minimo 9 caracteres">
+                </mat-form-field >
+            </mat-grid-tile>
+
+
+            <mat-grid-tile [colspan]="1" [rowspan]="1" >
+              <mat-form-field class="ancho">
+                  <mat-label>Telefono</mat-label>
+                  <input matInput type="text" autocomplete="off" formControlName='Telefono'>
+                </mat-form-field >
+            </mat-grid-tile>
+
+
+            <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                <mat-form-field class="ancho">
+                    <mat-label>Sexo</mat-label>
+                    <mat-select formControlName='Sexo'>
+                      <mat-option *ngFor="let item of sexo" [value]="item">
+                        {{item}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            
+
+            
+
+            <mat-grid-tile [colspan]="1" [rowspan]="1" class="ancho">
+               <button type="button"  routerLink="/" style="margin: rigth 20px;">Cancelar</button>
+               <button type="button" [disabled]="myForm.invalid" (click)="guardarPersona()"  color="primary">Guardar Socio</button>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+       
+    </form>
+
+    </mat-card>
+
+</div>
